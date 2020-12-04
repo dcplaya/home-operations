@@ -21,6 +21,7 @@ packages:
   - ipvsadm
   - jq
   - lvm2
+  - nano
   - neofetch
   - net-tools
   - netcat
@@ -38,6 +39,7 @@ packages:
   - scsitools
   - socat
   - software-properties-common
+  - tmux
   - traceroute
   - unattended-upgrades
   - unzip
@@ -63,7 +65,7 @@ packages:
   - popularity-contest
   - snapd
   - sosreport
-  - tmux
+  # - tmux
   - ubuntu-advantage-tools
   - ufw
   
