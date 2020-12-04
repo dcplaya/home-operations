@@ -32,6 +32,10 @@
   tags:
   - filesystem
 
+- include: multipath.yml
+  tags:
+  - multipath
+
 - include: unattended-upgrades.yml
   tags:
   - unattended-upgrades
