@@ -29,8 +29,11 @@ RUN apt-get -qq update \
 RUN curl -L -o ubuntu-20.04.1-live-server-amd64.iso https://mirror.umd.edu/ubuntu-iso/20.04.1/ubuntu-20.04.1-live-server-amd64.iso
 RUN 7z x ubuntu-20.04.1-live-server-amd64.iso -oiso
 
-COPY master-nodes.yaml autoinstall-masters.yml
-COPY worker-nodes.yaml autoinstall-workers.yml
+COPY node00.yaml autoinstall-node00.yml
+COPY node01.yaml autoinstall-node01.yml
+COPY node02.yaml autoinstall-node02.yml
+COPY node03.yaml autoinstall-node03.yml
+COPY node04.yaml autoinstall-node04.yml
 COPY entrypoint.sh .
 
 RUN mkdir -p /build
