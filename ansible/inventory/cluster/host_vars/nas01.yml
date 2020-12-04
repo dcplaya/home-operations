@@ -1,6 +1,6 @@
 ---
 
-ansible_host: "192.168.1.39"
+ansible_host: "10.10.200.210"
 ansible_user: admin
 ansible_python_interpreter: /share/CACHEDEV1_DATA/.qpkg/Python3/python3/bin/python3
 ansible_become: false
