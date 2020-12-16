@@ -32,9 +32,13 @@
   tags:
   - filesystem
 
-- include: multipath.yml
+# - include: multipath.yml
+#   tags:
+#   - multipath
+
+- include: udev.yml
   tags:
-  - multipath
+  - udev
 
 - include: unattended-upgrades.yml
   tags:

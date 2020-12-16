@@ -1,0 +1,16 @@
+#
+# https://www.davecorder.org/blog/persistent-linux-device-names-for-nortek-gocontrol-husbzb-1-z-wave-and-zigbee-stick/
+# 
+- name: udev | zigbee | create udev directory
+  become: true
+  file:
+    path: "/etc/udev/rules.d"
+    state: directory
+
+- name: udev | zigbee | create symlinks for know devices
+  become: true
+  copy:
+    content: |
+      SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8a2a", ATTRS{serial}=="813004F4", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="zwave"
+      SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8a2a", ATTRS{serial}=="813004F4", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="zigbee"
+    dest: /etc/udev/rules.d/99-husbzb-1.rules
