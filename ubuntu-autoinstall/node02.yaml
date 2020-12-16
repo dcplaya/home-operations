@@ -29,29 +29,67 @@ autoinstall:
   - shutdown -h now
   storage:
     config:
-    - {ptable: gpt, serial: ADATA SX8200PNP_2K1020024662, wwn: nvme.1cc1-324b31303230303234363632-414441544120535838323030504e50-00000001,
-      path: /dev/nvme0n1, wipe: superblock, preserve: false, name: '', grub_device: false,
-      type: disk, id: disk-nvme0n1}
-    - {serial: 1ADATA_SX8200PNP_DD564198838A6, wwn: '0x3044564198838160', path: /dev/sda,
-      wipe: superblock, preserve: false, name: '', grub_device: false, type: disk,
-      id: disk-sda}
-    - {device: disk-nvme0n1, size: 536870912, wipe: superblock, flag: boot, number: 1,
-      preserve: false, grub_device: true, type: partition, id: partition-6}
-    - {fstype: fat32, volume: partition-6, preserve: false, type: format, id: format-7}
-    - {device: disk-nvme0n1, size: 1073741824, wipe: superblock, flag: '', number: 2,
-      preserve: false, type: partition, id: partition-7}
-    - {fstype: ext4, volume: partition-7, preserve: false, type: format, id: format-8}
-    - {device: disk-nvme0n1, size: 510497128448, wipe: superblock, flag: '', number: 3,
-      preserve: false, type: partition, id: partition-8}
-    - name: ubuntu-vg0
-      devices: [partition-8, disk-sda]
+    - ptable: gpt
+      # serial: ADATA SX8200PNP_2K1020026193
+      # wwn: nvme.1cc1-324b31303230303236313933-414441544120535838323030504e50-00000001
+      path: /dev/nvme0n1
+      wipe: superblock
       preserve: false
-      type: lvm_volgroup
-      id: lvm_volgroup-4
-    - {name: lv-0, volgroup: lvm_volgroup-4, size: 1534700027904B, preserve: false,
-      type: lvm_partition, id: lvm_partition-4}
-    - {fstype: ext4, volume: lvm_partition-4, preserve: false, type: format, id: format-11}
-    - {device: format-11, path: /, type: mount, id: mount-11}
-    - {device: format-8, path: /boot, type: mount, id: mount-8}
-    - {device: format-7, path: /boot/efi, type: mount, id: mount-7}
+      name: ''
+      grub_device: false
+      type: disk
+      id: disk-nvme0n1
+    - device: disk-nvme0n1
+      size: 536870912
+      wipe: superblock
+      flag: boot
+      number: 1
+      preserve: false
+      grub_device: true
+      type: partition
+      id: partition-0
+    - fstype: fat32
+      volume: partition-0
+      preserve: false
+      type: format
+      id: format-0
+    - device: disk-nvme0n1
+      size: 1073741824
+      wipe: superblock
+      flag: ''
+      number: 2
+      preserve: false
+      type: partition
+      id: partition-1
+    - fstype: ext4
+      volume: partition-1
+      preserve: false
+      type: format
+      id: format-1
+    - device: disk-nvme0n1
+      # ~50GB For root
+      size: 53687091200
+      wipe: superblock
+      flag: ''
+      number: 3
+      preserve: false
+      type: partition
+      id: partition-2
+    - fstype: ext4
+      volume: partition-2
+      preserve: false
+      type: format
+      id: format-4
+    - device: format-4
+      path: /
+      type: mount
+      id: mount-4
+    - device: format-1
+      path: /boot
+      type: mount
+      id: mount-1
+    - device: format-0
+      path: /boot/efi
+      type: mount
+      id: mount-0
   version: 1
