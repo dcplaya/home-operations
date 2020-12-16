@@ -2,10 +2,11 @@
 
 
 
-allow username to login as sudo via ssh without pass
-install k9s on master
-~/.kube/config copy
-install flux v2 binary on localhost and master
+- allow username to login as sudo via ssh without pass
+  `ALL=(ALL) NOPASSWD:ALL` added to `/etc/sudoers` file
+- install k9s on master
+- ~/.kube/config copy
+- install flux v2 binary on localhost and master
 
 
 ## Done but not tested
