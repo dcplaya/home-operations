@@ -13,4 +13,11 @@
     content: |
       SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8a2a", ATTRS{serial}=="813004F4", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="zwave"
       SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8a2a", ATTRS{serial}=="813004F4", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="zigbee"
-    dest: /etc/udev/rules.d/99-husbzb-1.rules
+    dest: /etc/udev/rules.d/99-hubzb-1.rules
+
+- name: udev | zigbee | create symlinks for know Conbee II
+  become: true
+  copy:
+    content: |
+      SUBSYSTEM=="tty", ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", ATTRS{serial}=="DE2119158", SYMLINK+="conbee"
+    dest: /etc/udev/rules.d/69-conbee-2.rules
