@@ -1,9 +1,16 @@
 # Missing things in server deps
 
-
+- Fix node ISOs so the rook ceph partition gets made (no filesystem)
 
 - allow username to login as sudo via ssh without pass
-  `ALL=(ALL) NOPASSWD:ALL` added to `/etc/sudoers` file
+  `carpenam ALL=(ALL) NOPASSWD:ALL` added to `/etc/sudoers` file
+- Prevent ansible from asking password a billion times
+  Gets run at each ansible playbook beginnging (resets after reboot)
+  ```
+  ssh-agent $SHELL
+  ssh-add /home/$USER/.ssh/id_rsa
+  ```
+
 - install k9s on master
 - ~/.kube/config copy
 - install flux v2 binary on localhost and master
