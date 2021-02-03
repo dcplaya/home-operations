@@ -1,0 +1,94 @@
+#cloud-config
+autoinstall:
+  apt:
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches: [amd64, i386]
+      uri: http://10.10.200.210:8081/repository/Apt-Cache/
+    - arches: [default]
+      uri: http://ports.ubuntu.com/ubuntu-ports
+  identity: {hostname: node03, password: $6$/LA.BN/WF5rNWuf2$hGdgJCbQjxa3EEEPrxlUjjofe9JEQnh1HlpkbFVKS3CJ222s9CJC380Qf4rSW0HOwlu6aPh3lVJUZwhhBhCSn0,
+    realname: Drew Carpenter, username: carpenam}
+  keyboard: {layout: us, toggle: null, variant: ''}
+  locale: en_US
+  network:
+    ethernets:
+      eno1: {dhcp4: true}
+    version: 2
+  ssh:
+    allow-pw: true
+    authorized-keys: ['ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDYKo5iv7EtL3129VhsLyHx59oPKCloCAdLCUWzey+di01tL9/prtCbrzJqE96+tNccB8lo3cPOriEV1dYYjoofuVdLQKeAAYiS9Vqru7Ayu3btqSvVeySJ6b9rK/pO6+falIuJBMQL8QJPN3TNOblRR6Tp6hBnb+fJ7j3NnCOatCA3eJNS59LcueK9Kl8/pFczP/StHP5yQotXOXY+fXTpSVR7t7kWCpm4ISbuFtWJ2wOgrQLyF7sHhyZy+9ok4VkwknHcM9bQND40EeE0d5OqObKJl+t7ZRcCWXDSYY3vckl2jyc/WmuE0gMMaN6Y7MVxmQ64ubqKbLV82eqdsECcJQorIQS/Kj93i02G6pIHcikIoUVldNzESoxlelXnkVWVvhRRwHMPdH1a7yP5OuytH69UNkACvlFn3aNhCoy8ItMecQE9NRuqs331psCGlQyAVjJZgDjn6zJ47p1tg4S6+x2/VkPeFNGwfwtiLKOqalVI9QwC3yDUhyho5Z2YNe6t2NZa4PLsiWQD1pXvPvc9H2kKHCbylT5Q98AoDsj/fhSrBu0MUwvPiiMfgz/pVjKLmr4NS+viduAnH1hb5BQtmHT/cFR5pF8bpH+av+yF6o7C31n9i+IaiXDK5iK0gDWFNKdLsdI2LmDd/5O3YUazIBNSVfENHBFrMGNEeKmiPw==
+        dcplaya@github/43132400 # ssh-import-id gh:dcplaya', '', 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+8gv5BcuND0TLUmjLQnkcDGGZdKB2XwzNpiKWzQNAwHhmsv1+5MESm/w5Bph3i+qjm68/9ZO3RSxyML6KJycw6FlC2THE1c8Ib3IN1CLKN8jjLCDiWLfUrL0P6ktYTn9ZYFkrnD0TS7TlCsX/GVduIYDNVcXH1g4Ojl4KNw55h++hZLTnQoK37ZbI7kfZessnl7MCwg13f5pc3vRCo/B8rQLL9h7pdZ02GLPOR2eRc0bo0WQTmqNa8ClFoOmX8bbobA0Q8aIDw7i+W9Ld9BDBL10ikQoL1/x4OSgqlfC+rrJ9ItzPFdkga2PEIysYFDqf7ROxMGdU6Ti4rmiZv1mlivZKsgMlFehGgOY+Qlof/sbc2gmNeTM6zgllfOWwNaGrsQFH37VuWAaRnLPcEUIqonTAraqXb8469dur8Wp2u+XoD3LTbiG3lYWBRS/fWooaXCJLmDyYntU40u95qf2ruYKuNAWS6zuiDkH/TxA1eZricg1Qk4TjUKP81iZsZS0=
+        dcplaya@github/43433110 # ssh-import-id gh:dcplaya', '', 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPKb9PkQOKHcak+uG40IRC8aLcjvHfyJaGuYlJemQTLXaiU49RgY8sLffVrGOM7t4/d6ggfPRiQPI8Mn7rugH337cbGxSMDdq+y4/dNuAG9GDhxhUDa51D6ROOf70QU5FZTfoLVpLd1LDtzmZ7bEWOkFEyTMtkr6+OGAuB/0wbsf0OCNAVIrpCLB3mArceUUPL2vyEP4Ui02Av/gYxcgbw5Y1cSKCENCXBrSgJOpPdBSN3JgQDjX/r0OQMvTUloY2nHQtFAT8WeeI+3d4WQ4JfAlZ4vqyS+sKPrXYANEyEvFhjTMSO2iDWi6k7GnjW++HrKTdA+39cRNLgWQWgZJev+Yfg9zrnALFRyq6w+L9KIwx03HMgQnAL+KFbC2Aax8rY0QyY2pfZJ5k3bSpHKThm0k9kXjrBM0oTW5HwQDOPAF9Qm/vrZbb1TaOGzVRZlAj4bRcQzMl4AReaK3sjfTUt7A+KLaLgoYgnutjuWLXM7dyFWmksCpYhFsHGLZ95iLU=
+        dcplaya@github/43591643 # ssh-import-id gh:dcplaya', '', 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDdGqMc3CNxF4vNyKRgt8RucxREeiAKtkU0B/meYRrnzOhpriX44U1ypYYngzowYGUwVtx5fgF8hiRi9/jKOXZsrpg/rObBRQZZNum2ylirtAZU91SP5bk6x+5tqn0DmsMWL4rPdykOpB3TBcbD9dMfI674EDnEvuSJl9LxtNy1lrptwC2flQqkBZVTqj+j9iGUv8swIrdTzavO+AqrPHIQa2UiYharBbwMOK1/CeDI65hKETDaupIskRybdItlPVBaLFZKnNae2FSKJZAOe413l2XMY2yKBpgOpONYrx+ze7sPI1UpdbB9wNJ5l/YdaMpS/bKK1NxmZXdRaKMm2IhxRARamWFNp2Zyp/y3NPmKkRfdTsin8LXMd4NvIlXhs/WQTF9netvVgw7/vjmuZHjgoGJihZgXC/dN9hGR0ZCcoJGVAfMcYSTRuRq6FanqKUnQYHKNMT5w1Um4+GCs/sRmq6YxhNUlwy/wWqzOYVEUz8jUQj1L38tWjt0xrlvCRtc=
+        dcplaya@github/43834829 # ssh-import-id gh:dcplaya', '', 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDJQ8km2kkBCfQuxBn9+9L6mIdoAF5HJfodrZ2a/MFbBy6tXuGP1M3yoNi8AgVspvBsbsBLYY+WiArdQGtcku8wvXEM2OTq6X9aSzSf/IhNDbV71nnEWPxMX38US6ow7sitATbZa0fJohEChUQUGmm2FIm/TIxCItjGYd2WYhDLhoWybewlfnNwsi+5jpDh09w+9re1hyl/pCDDMb71r4qpsIHdE6ak5JaZPjOzEhUk6EAQEki6RO/HGmkwumgh8swlXMF5e4+DbDNkPb7HSSfnDC23IY8ptdqOzZWBwbW7VUy4Xh/NfD9hmWr+h+GUyuSX9RItsSUpDQQ4PftnHzfCJdNT141TXB2Nczl+CWQsuAuy3Bxs8PA0zqof9lnTVXuxP8VbFycl3pQIwPGjJlqFN7DT8QulldkobhIVOBnSFy9w+zKc6J5Zoo0dMQ3Ng+rt0sCtkbw8u3IJG9s1fw7a3PYSWDycpbPPEXshBItHcBXK+CG63WfWUARJAPfWFx1nTL0SPgL3SBI7oiDYKxSCRsrTnFs4G2TRIT4H5OdpftpaCiNGMZPdzGvOTuh8OrEPEVsHm7u8EtdJIUCuQBjMQ3J/dUSwyUDeW+jfINSW/em2t1R2hvZKeJmAy1/lrQCc5sBnz5R1J0Sh1lJMD0UmAcmPVA1pXah8G0pk6WPdew==
+        dcplaya@github/45290031 # ssh-import-id gh:dcplaya']
+    install-server: true
+  late-commands:
+  - echo 'carpenam ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/carpenam
+  - shutdown -h now
+  storage:
+    config:
+    - ptable: gpt
+      path: /dev/nvme0n1
+      wipe: superblock
+      preserve: false
+      name: ''
+      grub_device: false
+      type: disk
+      id: disk-nvme0n1
+    - device: disk-nvme0n1
+      size: 536870912
+      wipe: superblock
+      flag: boot
+      number: 1
+      preserve: false
+      grub_device: true
+      type: partition
+      id: partition-0
+    - fstype: fat32
+      volume: partition-0
+      preserve: false
+      type: format
+      id: format-0
+    - device: disk-nvme0n1
+      size: 1073741824
+      wipe: superblock
+      flag: ''
+      number: 2
+      preserve: false
+      type: partition
+      id: partition-1
+    - fstype: ext4
+      volume: partition-1
+      preserve: false
+      type: format
+      id: format-1
+    - device: disk-nvme0n1
+      # ~119GB For root
+      size: 130000000000
+      wipe: superblock
+      flag: ''
+      number: 3
+      preserve: false
+      type: partition
+      id: partition-2
+    - fstype: ext4
+      volume: partition-2
+      preserve: false
+      type: format
+      id: format-4
+    - device: format-4
+      path: /
+      type: mount
+      id: mount-4
+    - device: format-1
+      path: /boot
+      type: mount
+      id: mount-1
+    - device: format-0
+      path: /boot/efi
+      type: mount
+      id: mount-0
+  version: 1

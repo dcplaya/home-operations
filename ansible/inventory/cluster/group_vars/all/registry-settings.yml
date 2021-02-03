@@ -4,8 +4,8 @@
 # ...requires a registry cache already set up
 registry:
   cache:
-    enabled: false
-    address: "http://192.168.1.39:8082"
+    enabled: true
+    address: "http://10.10.200.210:8081/repository/Docker-Cache/"
   custom:
     enabled: false
     address: "http://x.x.x.x:5000"

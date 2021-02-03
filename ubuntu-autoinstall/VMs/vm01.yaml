@@ -5,16 +5,16 @@ autoinstall:
     preserve_sources_list: false
     primary:
     - arches: [amd64, i386]
-      uri: http://us.archive.ubuntu.com/ubuntu
+      uri: http://10.10.200.210:8081/repository/Apt-Cache/
     - arches: [default]
-      uri: http://ports.ubuntu.com/ubuntu-ports
-  identity: {hostname: node00, password: $6$/LA.BN/WF5rNWuf2$hGdgJCbQjxa3EEEPrxlUjjofe9JEQnh1HlpkbFVKS3CJ222s9CJC380Qf4rSW0HOwlu6aPh3lVJUZwhhBhCSn0,
+      uri: http://10.10.200.210:8081/repository/Apt-Ports/
+  identity: {hostname: vm01, password: $6$/LA.BN/WF5rNWuf2$hGdgJCbQjxa3EEEPrxlUjjofe9JEQnh1HlpkbFVKS3CJ222s9CJC380Qf4rSW0HOwlu6aPh3lVJUZwhhBhCSn0,
     realname: Drew Carpenter, username: carpenam}
   keyboard: {layout: us, toggle: null, variant: ''}
   locale: en_US
   network:
     ethernets:
-      eno1: {dhcp4: true}
+      eth0: {dhcp4: true}
     version: 2
   ssh:
     allow-pw: true
@@ -26,10 +26,12 @@ autoinstall:
         dcplaya@github/45290031 # ssh-import-id gh:dcplaya']
     install-server: true
   late-commands:
+  - echo 'carpenam ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/carpenam
+  # - curl https://github.com/dcplaya.keys -o /target/home/carpenam/.ssh/authorized_keys
   - shutdown -h now
   storage:
     config:
-    - {ptable: gpt, serial: SAMSUNG_MZNLF064HCGR-00000_S2G9NY0J102472, wwn: '0x5002538700000000',
+    - {ptable: gpt,
       path: /dev/sda, wipe: superblock, preserve: false, name: '', grub_device: false,
       type: disk, id: disk-sda}
     - {device: disk-sda, size: 536870912, wipe: superblock, flag: boot, number: 1,
@@ -38,17 +40,17 @@ autoinstall:
     - {device: disk-sda, size: 1073741824, wipe: superblock, flag: '', number: 2,
       preserve: false, type: partition, id: partition-1}
     - {fstype: ext4, volume: partition-1, preserve: false, type: format, id: format-1}
-    - {device: disk-sda, size: 62410194944, wipe: superblock, flag: '', number: 3,
+    - {device: disk-sda, size: 105761472512, wipe: superblock, flag: '', number: 3,
       preserve: false, type: partition, id: partition-2}
     - name: ubuntu-vg
       devices: [partition-2]
       preserve: false
       type: lvm_volgroup
       id: lvm_volgroup-0
-    - {name: ubuntu-lv, volgroup: lvm_volgroup-0, size: 31203524608B, preserve: false,
+    - {name: ubuntu-lv, volgroup: lvm_volgroup-0, size: 105759375360B, preserve: false,
       type: lvm_partition, id: lvm_partition-0}
-    - {fstype: ext4, volume: lvm_partition-0, preserve: false, type: format, id: format-2}
-    - {device: format-2, path: /, type: mount, id: mount-2}
+    - {fstype: ext4, volume: lvm_partition-0, preserve: false, type: format, id: format-3}
+    - {device: format-3, path: /, type: mount, id: mount-3}
     - {device: format-1, path: /boot, type: mount, id: mount-1}
     - {device: format-0, path: /boot/efi, type: mount, id: mount-0}
   version: 1

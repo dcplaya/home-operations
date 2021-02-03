@@ -5,7 +5,7 @@ autoinstall:
     preserve_sources_list: false
     primary:
     - arches: [amd64, i386]
-      uri: http://us.archive.ubuntu.com/ubuntu
+      uri: http://10.10.200.210:8081/repository/Apt-Cache/
     - arches: [default]
       uri: http://ports.ubuntu.com/ubuntu-ports
   identity: {hostname: node01, password: $6$/LA.BN/WF5rNWuf2$hGdgJCbQjxa3EEEPrxlUjjofe9JEQnh1HlpkbFVKS3CJ222s9CJC380Qf4rSW0HOwlu6aPh3lVJUZwhhBhCSn0,
@@ -26,12 +26,11 @@ autoinstall:
         dcplaya@github/45290031 # ssh-import-id gh:dcplaya']
     install-server: true
   late-commands:
+  - echo 'carpenam ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/carpenam
   - shutdown -h now
   storage:
     config:
     - ptable: gpt
-      # serial: ADATA SX8200PNP_2K1020026193
-      # wwn: nvme.1cc1-324b31303230303236313933-414441544120535838323030504e50-00000001
       path: /dev/nvme0n1
       wipe: superblock
       preserve: false
@@ -67,8 +66,8 @@ autoinstall:
       type: format
       id: format-1
     - device: disk-nvme0n1
-      # ~50GB For root
-      size: 53687091200
+      # ~119GB For root
+      size: 130000000000
       wipe: superblock
       flag: ''
       number: 3

@@ -21,12 +21,14 @@ Highly opinionated Ansible playbooks, Ansible roles, and other things that are u
 
 _All my Kubernetes master and worker nodes below are running bare metal Ubuntu 20.04.x_
 
-| Device                  | Count | OS Disk Size | Data Disk Size      | Ram  | Purpose                       |
-|-------------------------|-------|--------------|---------------------|------|-------------------------------|
-| Intel NUC10i3           | 1     | 256GB NVMe   | N/A                 | 16GB | Kubernetes k3s Master         |
-| Intel NUC8i5BEH         | 3     | 120GB SSD    | 1TB NVMe (longhorn) | 32GB | Kubernetes k3s Workers        |
-| Intel NUC8i7BEH         | 2     | 750GB SSD    | 1TB NVMe (longhorn) | 64GB | Kubernetes k3s Workers        |
-| Qnap NAS (rocinante)    | 1     | N/A          | 8x12TB RAID6        | 16GB | Media and shared file storage |
-| Synology NAS (NAS01)    | 1     | N/A          | 8x12TB RAID6        | 4GB  | Media and shared file storage |
+| Device                  | Node  | OS Disk Size | Data Disk Size      | Ram    | Purpose                       |
+|-------------------------|-------|--------------|---------------------|--------|-------------------------------|
+| Intel NUC7i3BNK         | 00    | 60GB NVMe    | N/A                 | 2x4GB  | Kubernetes k3s Master         |
+| Intel                   | 01    | 500GB NVMe   | N/A                 | 2x4GB  | Kubernetes k3s Workers        |
+| Intel                   | 02    | 500GB NVMe   | N/A                 | 1x16GB | Kubernetes k3s Workers        |
+| Intel                   | 03    | GB NVMe      | N/A                 | 1x16GB | Kubernetes k3s Workers        |
+| Intel                   | 04    | 1TB NVMe     | N/A                 | 2x16GB | Kubernetes k3s Workers        |
+
+| Synology NAS (NAS01)    | 1     | N/A          | 2x4TB RAID6         | 12GB   | Media and shared file storage |
 
 ---

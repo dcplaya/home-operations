@@ -6,7 +6,7 @@
 #
 
 # Use a specific version of k3s
-k3s_release_version: "v1.20.0+k3s2"
+k3s_release_version: "v1.20.2+k3s1"
 
 # Using the internal ectd HA of K3s
 k3s_etcd_datastore: true
@@ -15,22 +15,15 @@ k3s_etcd_datastore: true
 # ...if you are using the system-upgrade-controller you will need to use hard links rather than symbolic links as the controller will not be able to follow symbolic links.
 k3s_install_hard_links: true
 
-# Do not deploy the following
-k3s_no_traefik: true
-k3s_no_servicelb: true
-k3s_no_metrics_server: true
-k3s_no_flannel: true
-k3s_no_local_storage: true
-k3s_flannel_backend: "none"
-
+# Forget why I need this
 k3s_become_for_all: true
 
 # Network CIDR to use for pod IPs
-# k3s_cluster_cidr: "10.90.0.0/16"
+# Still need this for Calico install
 k3s_cluster_cidr: "10.42.0.0/16"
 
 # Network CIDR to use for service IPs
-# k3s_service_cidr: "10.96.0.0/16"
+# Still need this for Calico install
 k3s_service_cidr: "10.43.0.0/16"
 
 # Use experimental features (spooky!)
@@ -42,3 +35,17 @@ k3s_kubelet_args:
 
 # Enable debugging
 k3s_debug: false
+
+# v2 Config options
+k3s_server:
+  cluster-cidr: 10.42.0.0/16
+  service-cidr: 10.43.0.0/16
+  flannel-backend: 'none'
+  disable:
+    - traefik
+    - servicelb
+    - metrics-server
+    - local-storage
+
+# k3s_agent:
+#   with-node-id: true

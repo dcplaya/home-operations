@@ -1,0 +1,116 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+ 
+  # node00
+  config.vm.define "node00", primary: true do |node00|
+	# Hyper-V Specific Stuff
+    node00.vm.provider "hyperv" do |h|
+        h.vmname = "node00"
+        h.enable_virtualization_extensions = true
+        h.linked_clone = true
+        h.memory = 512
+    end
+    node00.vm.box = "bento/ubuntu-20.04"
+    # Scripts
+    node00.vm.provision "shell", path: "provisioning/username.sh"
+    node00.vm.provision "shell", path: "provisioning/packages.sh"
+    # Networking
+    node00.vm.network "public_network", bridge: "LAN Access"
+    node00.vm.synced_folder '.', '/vagrant', disabled: true
+    # Manual IP. This MUST be last since it forces an IP change. Doesn't take affect until reboot
+    node00.vm.provision "shell", path: "provisioning/network-node00.sh", privileged: true
+    # Reboot VM. Require "vagrant plugin install vagrant-reload"
+    # node00.vm.provision :reload
+  end
+
+  # node01
+  config.vm.define "node01", primary: true do |node01|
+	# Hyper-V Specific Stuff
+    node01.vm.provider "hyperv" do |h|
+        h.vmname = "node01"
+        h.enable_virtualization_extensions = true
+        h.linked_clone = true
+        h.memory = 512
+    end
+    node01.vm.box = "bento/ubuntu-20.04"
+    # Scripts
+    node01.vm.provision "shell", path: "provisioning/username.sh"
+    node01.vm.provision "shell", path: "provisioning/packages.sh"
+    # Networking
+    node01.vm.network "public_network", bridge: "LAN Access"
+    node01.vm.synced_folder '.', '/vagrant', disabled: true
+    # Manual IP. This MUST be last since it forces an IP change. Doesn't take affect until reboot
+    node01.vm.provision "shell", path: "provisioning/network-node01.sh", privileged: true
+    # Reboot VM. Require "vagrant plugin install vagrant-reload"
+    # node01.vm.provision :reload
+  end
+
+  # node02
+  config.vm.define "node02", primary: true do |node02|
+	# Hyper-V Specific Stuff
+    node02.vm.provider "hyperv" do |h|
+        h.vmname = "node02"
+        h.enable_virtualization_extensions = true
+        h.linked_clone = true
+        h.memory = 512
+    end
+    node02.vm.box = "bento/ubuntu-20.04"
+    # Scripts
+    node02.vm.provision "shell", path: "provisioning/username.sh"
+    node02.vm.provision "shell", path: "provisioning/packages.sh"
+    # Networking
+    node02.vm.network "public_network", bridge: "LAN Access"
+    node02.vm.synced_folder '.', '/vagrant', disabled: true
+    # Manual IP. This MUST be last since it forces an IP change. Doesn't take affect until reboot
+    node02.vm.provision "shell", path: "provisioning/network-node02.sh", privileged: true
+    # Reboot VM. Require "vagrant plugin install vagrant-reload"
+    # node02.vm.provision :reload
+  end
+
+  # node03
+  config.vm.define "node03", primary: true do |node03|
+	# Hyper-V Specific Stuff
+    node03.vm.provider "hyperv" do |h|
+        h.vmname = "node03"
+        h.enable_virtualization_extensions = true
+        h.linked_clone = true
+        h.memory = 512
+    end
+    node03.vm.box = "bento/ubuntu-20.04"
+    # Scripts
+    node03.vm.provision "shell", path: "provisioning/username.sh"
+    node03.vm.provision "shell", path: "provisioning/packages.sh"
+    # Networking
+    node03.vm.network "public_network", bridge: "LAN Access"
+    node03.vm.synced_folder '.', '/vagrant', disabled: true
+    # Manual IP. This MUST be last since it forces an IP change. Doesn't take affect until reboot
+    node03.vm.provision "shell", path: "provisioning/network-node03.sh", privileged: true
+    # Reboot VM. Require "vagrant plugin install vagrant-reload"
+    # node03.vm.provision :reload
+  end
+
+  # node04
+  config.vm.define "node04", primary: true do |node04|
+	# Hyper-V Specific Stuff
+    node04.vm.provider "hyperv" do |h|
+        h.vmname = "node04"
+        h.enable_virtualization_extensions = true
+        h.linked_clone = true
+        h.memory = 512
+    end
+    node04.vm.box = "bento/ubuntu-20.04"
+    # Scripts
+    node04.vm.provision "shell", path: "provisioning/username.sh"
+    node04.vm.provision "shell", path: "provisioning/packages.sh"
+    # Networking
+    node04.vm.network "public_network", bridge: "LAN Access"
+    node04.vm.synced_folder '.', '/vagrant', disabled: true
+    # Manual IP. This MUST be last since it forces an IP change. Doesn't take affect until reboot
+    node04.vm.provision "shell", path: "provisioning/network-node04.sh", privileged: true
+    # Reboot VM. Require "vagrant plugin install vagrant-reload"
+    # node04.vm.provision :reload
+  end
+
+end

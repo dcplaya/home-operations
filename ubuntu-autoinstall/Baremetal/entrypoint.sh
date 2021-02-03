@@ -68,3 +68,15 @@ xorriso -as mkisofs -r \
     -isohybrid-gpt-basdat -isohybrid-apm-hfsplus \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin  \
     iso/boot iso
+
+cp autoinstall-node05.yml iso/nocloud/user-data
+
+xorriso -as mkisofs -r \
+    -V Ubuntu\ workers\ amd64 \
+    -o /build/ubuntu-20.04.1-live-server-amd64-autoinstall-node05.iso \
+    -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot \
+    -boot-load-size 4 -boot-info-table \
+    -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot \
+    -isohybrid-gpt-basdat -isohybrid-apm-hfsplus \
+    -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin  \
+    iso/boot iso
